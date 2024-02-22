@@ -2,9 +2,7 @@
 
 session_start();
 require_once(__DIR__ . '/config/mysql.php');
-require_once(__DIR__ . '/databaseconnect.php');
-require_once(__DIR__ . '/variables.php');
-require_once(__DIR__ . '/functions.php');
+require_once(__DIR__ . '/src/model.php');
 
 /**
  * On ne traite pas les super globales provenant de l'utilisateur directement,
@@ -13,6 +11,7 @@ require_once(__DIR__ . '/functions.php');
 $postData = $_POST;
 
 // Validation du formulaire
+$users = getUsers();
 if (isset($postData['email']) &&  isset($postData['password'])) {
     if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
         $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Il faut un email valide pour soumettre le formulaire.';

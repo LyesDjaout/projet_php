@@ -4,8 +4,7 @@ session_start();
 
 require_once(__DIR__ . '/isConnect.php');
 require_once(__DIR__ . '/config/mysql.php');
-require_once(__DIR__ . '/databaseconnect.php');
-require_once(__DIR__ . '/functions.php');
+require_once(__DIR__ . '/src/model.php');
 
 /**
  * On ne traite pas les super globales provenant de l'utilisateur directement,
@@ -18,6 +17,7 @@ if (!isset($postData['id']) || !is_numeric($postData['id'])) {
     return;
 }
 
+$mysqlClient = dbConnect();
 $deleteRecipeStatement = $mysqlClient->prepare('DELETE FROM recipes WHERE recipe_id = :id');
 $deleteRecipeStatement->execute([
     'id' => (int)$postData['id'],

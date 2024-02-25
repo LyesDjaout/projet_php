@@ -15,10 +15,10 @@
 
         <?php require_once(__DIR__ . '/header.php'); ?>
         <h1>Supprimer la recette ?</h1>
-        <form action="recipes_post_delete.php" method="POST">
+        <form action="index.php?action=deleteRecipesPost" method="POST">
             <div class="mb-3 visually-hidden">
                 <label for="id" class="form-label">Identifiant de la recette</label>
-                <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $getData['id']; ?>">
+                <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $identifier; ?>">
             </div>
 
             <button type="submit" class="btn btn-danger">La suppression est définitive</button>

@@ -1,4 +1,6 @@
-<form action="comments_post_create.php" method="POST">
+<?php require_once('app/controllers/isConnect.php'); ?>
+
+<form action="index.php?action=createCommentsPost" method="POST">
     <div class="mb-3 visually-hidden">
         <input class="form-control" type="text" name="recipe_id" value="<?php echo($recipe['recipe_id']); ?>" />
     </div>

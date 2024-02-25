@@ -16,7 +16,7 @@
         <?php require_once(__DIR__ . '/header.php'); ?>
 
         <h1>Ajouter une recette</h1>
-        <form action="recipes_post_create.php" method="POST">
+        <form action="index.php?action=createRecipesPost" method="POST">
             <div class="mb-3">
                 <label for="title" class="form-label">Titre de la recette</label>
                 <input type="text" class="form-control" id="title" name="title" aria-describedby="title-help">

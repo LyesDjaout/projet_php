@@ -1,11 +1,7 @@
 <?php
 
-/**
- * On ne traite pas les super globales provenant de l'utilisateur directement,
- * ces données doivent être testées et vérifiées.
- */
-
-$postData = $_POST;
+function submitContact(array $input){
+    $postData = $input;
 
 if (
     !isset($postData['email'])
@@ -13,8 +9,7 @@ if (
     || empty($postData['message'])
     || trim($postData['message']) === ''
 ) {
-    echo('Il faut un email et un message valides pour soumettre le formulaire.');
-    return;
+    throw new Exception('Il faut un email et un message valides pour soumettre le formulaire.');
 }
 
 $isFileLoaded = false;
@@ -22,8 +17,7 @@ $isFileLoaded = false;
 if (isset($_FILES['screenshot']) && $_FILES['screenshot']['error'] === 0) {
     // Testons, si le fichier est trop volumineux
     if ($_FILES['screenshot']['size'] > 1000000) {
-        echo "L'envoi n'a pas pu être effectué, erreur ou image trop volumineuse";
-        return;
+        throw new Exception("L'envoi n'a pas pu être effectué, erreur ou image trop volumineuse");
     }
 
     // Testons, si l'extension n'est pas autorisée
@@ -31,15 +25,13 @@ if (isset($_FILES['screenshot']) && $_FILES['screenshot']['error'] === 0) {
     $extension = $fileInfo['extension'];
     $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
     if (!in_array($extension, $allowedExtensions)) {
-        echo "L'envoi n'a pas pu être effectué, l'extension {$extension} n'est pas autorisée";
-        return;
+        throw new Exception("L'envoi n'a pas pu être effectué, l'extension {$extension} n'est pas autorisée");
     }
 
     // Testons, si le dossier uploads est manquant
     $path = __DIR__ . '/uploads/';
     if (!is_dir($path)) {
-        echo "L'envoi n'a pas pu être effectué, le dossier uploads est manquant";
-        return;
+        throw new Exception("L'envoi n'a pas pu être effectué, le dossier uploads est manquant");
     }
 
     // On peut valider le fichier et le stocker définitivement
@@ -47,4 +39,5 @@ if (isset($_FILES['screenshot']) && $_FILES['screenshot']['error'] === 0) {
     $isFileLoaded = true;
 }
 
-require('templates/submit_contact.php');
+require('app/templates/submit_contact.php');
+}

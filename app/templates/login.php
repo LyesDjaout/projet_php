@@ -1,8 +1,22 @@
-<!--
-   Si utilisateur/trice est non identifié(e), on affiche le formulaire
--->
-<?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
-    <form action="submit_login.php" method="POST">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de recettes - Page d'accueil</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    >
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div class="container">
+
+    <?php require_once(__DIR__ . '/header.php'); 
+
+    if (!isset($_SESSION['LOGGED_USER'])) : ?>
+    <form action="index.php?action=submitLogin" method="POST">
         <!-- si message d'erreur on l'affiche -->
         <?php if (isset($_SESSION['LOGIN_ERROR_MESSAGE'])) : ?>
             <div class="alert alert-danger" role="alert">
@@ -27,3 +41,7 @@
         Bonjour <?php echo $_SESSION['LOGGED_USER']['email']; ?> et bienvenue sur le site !
     </div>
 <?php endif; ?>
+
+<?php require_once(__DIR__ . '/footer.php'); ?>
+</body>
+</html>

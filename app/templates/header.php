@@ -7,17 +7,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link" href="index.php?action=contact">Contact</a>
                 </li>
+                <?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact</a>
+                    <a class="nav-link" href="index.php?action=login">Se connecter</a>
                 </li>
+                <?php endif; ?>
                 <?php if (isset($_SESSION['LOGGED_USER'])) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="recipes_create.php">Ajoutez une recette !</a>
+                        <a class="nav-link" href="index.php?action=createRecipes">Ajoutez une recette !</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Déconnexion</a>
+                        <a class="nav-link" href="index.php?action=logout">Déconnexion</a>
                     </li>
                 <?php endif; ?>
             </ul>

@@ -8,20 +8,31 @@ function submitLogin(array $input){
 
     // Validation du formulaire
     $users = getUsers();
+
     if (isset($postData['email']) &&  isset($postData['password'])) {
+        if($postData['email'] == '' || $postData['password'] == ''){
+            $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Vueillez renseigner votre email et mot de passe !';
+            require('app/templates/login.php');
+            return;
+        }
         if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
             $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Il faut un email valide pour soumettre le formulaire.';
         } else {
             foreach ($users as $user) {
-                if (
-                    $user['email'] === $postData['email'] &&
-                    $user['password'] === $postData['password']
-                ) {
-                    $_SESSION['LOGGED_USER'] = [
-                        'email' => $user['email'],
-                        'user_id' => $user['user_id'],
-                    ];
-                    redirectToUrl('index.php');
+                if ($user['email'] === $postData['email']){
+                    list($hashedPassword, $salt) = explode(':', $user['password'], 2);
+                    $saltedPassword = $postData['password'] . $salt;
+                    
+                    if(password_verify($saltedPassword, $hashedPassword)) {
+                        $_SESSION['LOGGED_USER'] = [
+                            'full_name' => $user['full_name'],
+                            'email' => $user['email'],
+                            'user_id' => $user['user_id'],
+                        ];
+                        $csrfToken = bin2hex(random_bytes(32));
+                        $_SESSION['csrf_token'] = $csrfToken;
+                        redirectToUrl('index.php');
+                    }
                 }
             }
 
@@ -34,5 +45,5 @@ function submitLogin(array $input){
                 require('app/templates/login.php');
             }
         }
-    }
+    } 
 }

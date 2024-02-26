@@ -1,16 +1,15 @@
-<?php require_once('app/controllers/isConnect.php'); ?>
-
-<form action="index.php?action=createCommentsPost" method="POST">
-    <div class="mb-3 visually-hidden">
-        <input class="form-control" type="text" name="recipe_id" value="<?php echo($recipe['recipe_id']); ?>" />
+<form action="index.php?action=comments_post_create" method="POST">
+    <div>
+        <input type="text" name="recipe_id" value="<?php echo htmlspecialchars($recipe['recipe_id']); ?>" />
     </div>
-    <div class="mb-3">
-        <label for="review" class="form-label">Evaluez la recette (de 1 à 5)</label>
-        <input type="number" class="form-control" id="review" name="review" min="1" max="5" step="1" />
+    <div>
+        <label for="review">Evaluez la recette (de 1 à 5)</label>
+        <input type="number" id="review" name="review" min="1" max="5" step="1" />
     </div>
-    <div class="mb-3">
-        <label for="comment" class="form-label">Postez un commentaire</label>
-        <textarea class="form-control" placeholder="Soyez respectueux/se, nous sommes humain(e)s." id="comment" name="comment"></textarea>
+    <div>
+        <label for="comment">Postez un commentaire</label>
+        <textarea id="comment" name="comment"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Envoyer</button>
+    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+    <button type="submit">Envoyer</button>
 </form>

@@ -3,7 +3,7 @@
 function deleteRecipesPost(array $input){
     session_start();
     require_once('app/controllers/redirect.php');
-    require_once(__DIR__ . '/isConnect.php');
+    require_once(__DIR__ . '/is_connect.php');
 
     $identifier = $input['id'];
 

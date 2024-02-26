@@ -4,7 +4,7 @@ function addComment(array $input){
     session_start();
     require_once('app/model/comment.php');
 
-    require_once(__DIR__ . '/isConnect.php');
+    require_once(__DIR__ . '/is_connect.php');
 
     $postData = $input;
 

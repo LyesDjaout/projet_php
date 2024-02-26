@@ -1,39 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site de Recettes - Edition de recette</title>
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-</head>
-<body class="d-flex flex-column min-vh-100">
-    <div class="container">
-
-        <?php require_once(__DIR__ . '/header.php'); ?>
-        <h1>Mettre à jour <?php echo($recipe['title']); ?></h1>
-        <form action="index.php?action=updateRecipesPost" method="POST">
-            <div class="mb-3 visually-hidden">
-                <label for="id" class="form-label">Identifiant de la recette</label>
-                <input type="hidden" class="form-control" id="id" name="id" value="<?php echo($identifier); ?>">
-            </div>
-            <div class="mb-3">
-                <label for="title" class="form-label">Titre de la recette</label>
-                <input type="text" class="form-control" id="title" name="title" aria-describedby="title-help" value="<?php echo($recipe['title']); ?>">
-                <div id="title-help" class="form-text">Choisissez un titre percutant !</div>
-            </div>
-            <div class="mb-3">
-                <label for="recipe" class="form-label">Description de la recette</label>
-                <textarea class="form-control" placeholder="Seulement du contenu vous appartenant ou libre de droits." id="recipe" name="recipe"><?php echo $recipe['recipe']; ?></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-        </form>
-        <br />
-    </div>
-
-    <?php require_once(__DIR__ . '/footer.php'); ?>
-</body>
-</html>
+<?php $title = "Site de Recettes - Page de modification de recettes"; ?>
+<?php ob_start(); ?>
+    <h1>Mettre à jour <?php echo htmlspecialchars($recipe['title']); ?></h1>
+    <form action="index.php?action=recipes_post_update" method="POST">
+        <div>
+            <label for="id">Identifiant de la recette</label>
+            <input type="hidden" id="id" name="id" value="<?php echo htmlspecialchars($identifier); ?>">
+        </div>
+        <div>
+            <label for="title">Titre de la recette</label>
+            <input type="text" id="title" name="title" aria-describedby="title-help" value="<?php echo htmlspecialchars($recipe['title']); ?>">
+            <div id="title-help">Choisissez un titre percutant !</div>
+        </div>
+           <div>
+            <label for="recipe">Description de la recette</label>
+            <textarea placeholder="Seulement du contenu vous appartenant ou libre de droits." id="recipe" name="recipe"><?php echo htmlspecialchars($recipe['recipe']); ?></textarea>
+        </div>
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+        <button type="submit">Envoyer</button>
+    </form>
+    <br />
+<?php $content = ob_get_clean(); ?>
+<?php require('layout.php') ?>

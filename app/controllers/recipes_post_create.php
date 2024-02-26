@@ -2,7 +2,7 @@
 
 function addRecipes(array $input){
     session_start();
-    require_once('app/controllers/isConnect.php');
+    require_once('app/controllers/is_connect.php');
 
     $postData = $input;
 

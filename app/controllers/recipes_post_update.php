@@ -3,7 +3,7 @@
 function updateRecipesPost(array $input){
     session_start();
 
-    require_once(__DIR__ . '/isConnect.php');
+    require_once(__DIR__ . '/is_connect.php');
 
     $postData = $input;
 

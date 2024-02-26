@@ -13,58 +13,68 @@ require_once('app/controllers/recipes_delete.php');
 require_once('app/controllers/recipes_post_delete.php');
 require_once('app/controllers/comments_post_create.php');
 require_once('app/controllers/login.php');
+require_once('app/controllers/submit_register.php');
+require_once('app/controllers/register.php');
+require_once('app/controllers/display_autor.php');
+require_once('app/controllers/get_valid_recipes.php');
 
 try{
     if (isset($_GET['action']) && $_GET['action'] !== '') {
         switch ($_GET['action']) {
-            case 'createCommentsPost':
+            case 'comments_post_create':
                 addComment($_POST);
                 break;
             case 'contact':
                 contact();
                 break;
-            case 'submitContact':
+            case 'submit_contact':
                 submitContact($_POST);
                 break;
-            case 'createRecipes':
+            case 'recipes_create':
                 createRecipes();
                 break;
-            case 'createRecipesPost':
+            case 'recipes_post_create':
                 addRecipes($_POST);
                 break;
             case 'logout':
                 logout();
                 break;
-            case 'submitLogin':
+            case 'submit_login':
                 submitLogin($_POST);
                 break;
-            case 'readRecipes':
-                if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    $identifier = $_GET['id'];
+            case 'recipes_read':
+                if (isset($_POST['recipe_id']) && $_POST['recipe_id'] > 0) {
+                    $identifier = $_POST['recipe_id'];
                     readRecipes($identifier);
                 }
                 break;
-            case 'updateRecipes':
-                if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    $identifier = $_GET['id'];
+            case 'recipes_update':
+                if (isset($_POST['recipe_id']) && $_POST['recipe_id'] > 0) {
+                    $identifier = $_POST['recipe_id'];
                     updateRecipes($identifier);
                 }
                 break;
-            case 'updateRecipesPost':
+            case 'recipes_post_update':
                 updateRecipesPost($_POST);
                 break;
-            case 'deleteRecipes':
-                if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    $identifier = $_GET['id'];
+            case 'recipes_delete':
+                if (isset($_POST['recipe_id']) && $_POST['recipe_id'] > 0) {
+                    $identifier = $_POST['recipe_id'];
                     deleteRecipes($identifier);
                 }
                 break;
-            case 'deleteRecipesPost':
+            case 'recipes_post_delete':
                 deleteRecipesPost($_POST);
                 break;
             case 'login':
                 login();
                 break;
+            case 'submit_register':
+                submitRegister($_POST);
+                break;
+                case 'register':
+                    register();
+                    break;
             default:
                 throw new Exception("La page que vous recherchez n'existe pas.");
         }
@@ -73,5 +83,6 @@ try{
     }
     
 }catch(Exception $e){
-    echo $e->getMessage();
+    $error_message = $e->getMessage();
+    require('app/templates/error.php');
 }

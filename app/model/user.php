@@ -2,31 +2,40 @@
 require_once('app/load_env.php');
 
 function getUsers(){
-    $database = userdbConnect();
-    $usersStatement = $database->prepare('SELECT * FROM users');
-    $usersStatement->execute();
-    $users = $usersStatement->fetchAll();
-    return $users;
+    try{
+        $database = userdbConnect();
+        $usersStatement = $database->prepare('SELECT * FROM users');
+        $usersStatement->execute();
+        $users = $usersStatement->fetchAll();
+        return $users;
+    } catch (Exception $exception) {
+        throw new Exception('Erreur : ' . $exception->getMessage());
+    }
 }
 
-function displayAuthor(string $authorEmail, array $users): string
-{
-    foreach ($users as $user) {
-        if ($authorEmail === $user['email']) {
-            return $user['full_name'] . '(' . $user['age'] . ' ans)';
-        }
+function addUser(string $full_name, int $age, string $email, string $password, string $salt){
+    try{
+        $database = userdbConnect();
+        $insertUser = $database->prepare('INSERT INTO users(full_name, email, password, age) VALUES (:full_name, :email, :password, :age)');
+        $insertUser->execute([
+        'full_name' => $full_name,
+        'email' => $email,
+        'password' => $password . ":" . $salt,
+        'age' => $age,
+        ]);
+        return $insertUser;
+    } catch (Exception $exception) {
+        throw new Exception('Erreur : ' . $exception->getMessage());
     }
-
-    return 'Auteur inconnu';
 }
 
 function userDbConnect(){
-    $mysqlHost = getenv('MYSQL_HOST');
-    $mysqlPort = getenv('MYSQL_PORT');
-    $mysqlName = getenv('MYSQL_NAME');
-    $mysqlUser = getenv('MYSQL_USER');
-    $mysqlPassword = getenv('MYSQL_PASSWORD');
-    // try {
+    try {
+        $mysqlHost = getenv('MYSQL_HOST');
+        $mysqlPort = getenv('MYSQL_PORT');
+        $mysqlName = getenv('MYSQL_NAME');
+        $mysqlUser = getenv('MYSQL_USER');
+        $mysqlPassword = getenv('MYSQL_PASSWORD');
         $database = new PDO(
             sprintf('mysql:host=%s;dbname=%s;port=%s;charset=utf8', $mysqlHost, $mysqlName, $mysqlPort),
             $mysqlUser,
@@ -34,7 +43,7 @@ function userDbConnect(){
         );
         $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $database;
-    // } catch (Exception $exception) {
-    //     die('Erreur : ' . $exception->getMessage());
-    // }
+    } catch (Exception $exception) {
+        throw new Exception('Erreur : ' . $exception->getMessage());
+    }
 }

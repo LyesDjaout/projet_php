@@ -3,7 +3,7 @@
     <h1>Supprimer la recette ?</h1>
     <form action="index.php?action=recipes_post_delete" method="POST">
         <div>
-            <label for="id">Identifiant de la recette</label>
+            <label for="id"></label>
             <input type="hidden" id="id" name="id" value="<?php echo htmlspecialchars($identifier); ?>">
         </div>
         <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">

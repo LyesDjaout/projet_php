@@ -3,13 +3,12 @@
     <h1>Mettre à jour <?php echo htmlspecialchars($recipe['title']); ?></h1>
     <form action="index.php?action=recipes_post_update" method="POST">
         <div>
-            <label for="id">Identifiant de la recette</label>
+            <label for="id"></label>
             <input type="hidden" id="id" name="id" value="<?php echo htmlspecialchars($identifier); ?>">
         </div>
         <div>
             <label for="title">Titre de la recette</label>
             <input type="text" id="title" name="title" aria-describedby="title-help" value="<?php echo htmlspecialchars($recipe['title']); ?>">
-            <div id="title-help">Choisissez un titre percutant !</div>
         </div>
            <div>
             <label for="recipe">Description de la recette</label>

@@ -15,7 +15,7 @@ function addRecipes(array $input){
         || !preg_match("/^[\p{L}'\-]+(?:\s[\p{L}'\-]+)*$/u", $postData['title'])
         || !preg_match("/^[\p{L}'\-]+(?:\s[\p{L}'\-]+)*$/u", $postData['recipe'])
     ) {
-        throw new Exception('Il faut un titre et une recette pour soumettre le formulaire.');
+        throw new Exception('Il faut un titre et une recette valides pour soumettre le formulaire.');
     }
 
     $title = trim(strip_tags($postData['title']));

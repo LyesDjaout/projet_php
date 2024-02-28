@@ -4,12 +4,11 @@
     <form action="index.php?action=recipes_post_create" method="POST">
         <div>
             <label for="title">Titre de la recette</label>
-            <input type="text" id="title" name="title" aria-describedby="title-help">
-            <div id="title-help">Choisissez un titre percutant !</div>
+            <input type="text" id="title" name="title" aria-describedby="title-help" required>
         </div>
         <div>
             <label for="recipe">Description de la recette</label>
-            <textarea placeholder="Seulement du contenu vous appartenant ou libre de droits." id="recipe" name="recipe"></textarea>
+            <textarea placeholder="Seulement du contenu vous appartenant ou libre de droits." id="recipe" name="recipe" required></textarea>
         </div>
         <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
         <button type="submit">Envoyer</button>

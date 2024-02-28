@@ -7,8 +7,8 @@ function submitRegister(array $input){
     $postData = $input;
 
     if(isset($postData['full_name'])){
-        if($postData['full_name'] == ''){
-            $_SESSION['REGISTER_ERROR_MESSAGE'] = "Vous devez renseigner votre nom complet !";       
+        if($postData['full_name'] == '' || !preg_match("/^[\p{L}'\-]+(?:\s[\p{L}'\-]+)*$/u", $postData['full_name'])){
+            $_SESSION['REGISTER_ERROR_MESSAGE'] = "Vous devez renseigner un nom complet valide!";       
             require('app/templates/register.php');
             return; 
         }
@@ -17,7 +17,7 @@ function submitRegister(array $input){
     }
 
     if(isset($postData['age'])){
-        if($postData['age'] == 0){
+        if($postData['age'] <= 0 || !preg_match('/[0-9]/', $postData['age'])){
             $_SESSION['REGISTER_ERROR_MESSAGE'] = "Veuillez renseiger un age valide !";    
             require('app/templates/register.php');
             return;    
@@ -27,7 +27,7 @@ function submitRegister(array $input){
     }
 
     if(isset($postData['email'])){
-        if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL) || !preg_match('/^(("[\w\s!#$%&\'*+\/=?^`{|}~.-]+")|([\w\s!#$%&\'*+\/=?^`{|}~.-]+))@(?:[\w-]+\.)+[\w]{2,}$/', $postData['email'])) {
             $_SESSION['REGISTER_ERROR_MESSAGE'] = 'Il faut un email valide pour soumettre le formulaire !';
             require('app/templates/register.php');
             return;
@@ -37,7 +37,7 @@ function submitRegister(array $input){
     }
 
     if(isset($postData['password'])){
-        if (strlen($postData['password']) < 4 || !preg_match('/[0-9]/', $postData['password']) || !preg_match('/[a-z]/', $postData['password']) || !preg_match('/[A-Z]/', $postData['password']) || !preg_match('/[^a-zA-Z0-9\s]/', $postData['password'])) {
+        if (!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9\s]).{4,}$/', $postData['password'])) {
             $_SESSION['REGISTER_ERROR_MESSAGE'] = 'Le mot de passe doit contenir au moins 4 caractères, une majuscule, une minuscule, un caractère spécial et un chiffre !';
             require('app/templates/register.php');
             return;

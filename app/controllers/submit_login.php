@@ -15,8 +15,10 @@ function submitLogin(array $input){
             require('app/templates/login.php');
             return;
         }
-        if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL) || !preg_match('/^(("[\w\s!#$%&\'*+\/=?^`{|}~.-]+")|([\w\s!#$%&\'*+\/=?^`{|}~.-]+))@(?:[\w-]+\.)+[\w]{2,}$/', $postData['email'])) {
             $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Il faut un email valide pour soumettre le formulaire.';
+            require('app/templates/login.php');
+            return;
         } else {
             foreach ($users as $user) {
                 if ($user['email'] === $postData['email']){
@@ -37,11 +39,7 @@ function submitLogin(array $input){
             }
 
             if (!isset($_SESSION['LOGGED_USER'])) {
-                $_SESSION['LOGIN_ERROR_MESSAGE'] = sprintf(
-                    'Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
-                    $postData['email'],
-                    strip_tags($postData['password'])
-                );
+                $_SESSION['LOGIN_ERROR_MESSAGE'] = 'Les informations envoyées ne permettent pas de vous identifier';
                 require('app/templates/login.php');
             }
         }

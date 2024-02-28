@@ -4,11 +4,13 @@ function submitContact(array $input){
     $postData = $input;
 
 if (
-    !isset($postData['email'])
-    || !filter_var($postData['email'], FILTER_VALIDATE_EMAIL)
-    || empty($postData['message'])
-    || trim($postData['message']) === ''
-) {
+    !isset($postData['email']) 
+    || !isset($postData['message']) 
+    || !filter_var($postData['email'], FILTER_VALIDATE_EMAIL) 
+    || !preg_match('/^(("[\w\s!#$%&\'*+\/=?^`{|}~.-]+")|([\w\s!#$%&\'*+\/=?^`{|}~.-]+))@(?:[\w-]+\.)+[\w]{2,}$/', $postData['email']) 
+    || empty($postData['message']) || trim(strip_tags($postData['message'])) === '' 
+    || !preg_match("/^[\p{L}0-9\s.,@!?'\(\)\"\-\£\€\$]+$/u", $postData['message'])
+    ) {
     throw new Exception('Il faut un email et un message valides pour soumettre le formulaire.');
 }
 

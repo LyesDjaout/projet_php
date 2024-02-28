@@ -4,12 +4,11 @@
     <form action="index.php?action=submit_contact" method="POST" enctype="multipart/form-data">
         <div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" aria-describedby="email-help">
-            <div id="email-help">Nous ne revendrons pas votre email.</div>
+            <input type="email" id="email" name="email" aria-describedby="email-help" required>
         </div>
         <div>
             <label for="message">Votre message</label>
-            <textarea placeholder="Exprimez vous" id="message" name="message"></textarea>
+            <textarea placeholder="Exprimez vous" id="message" name="message" required></textarea>
         </div>
         <div>
             <label for="screenshot">Votre capture d'écran</label>

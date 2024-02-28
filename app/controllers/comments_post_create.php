@@ -10,6 +10,7 @@ function addComment(array $input){
 
     if (
         !isset($postData['comment']) ||
+        !preg_match("/^[\p{L}0-9\s.,@!?'\(\)\"\-\£\€\$]+$/u", $postData['comment']) ||
         !isset($postData['recipe_id']) ||
         !is_numeric($postData['recipe_id']) ||
         !is_numeric($postData['review'])

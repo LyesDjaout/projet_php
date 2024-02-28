@@ -11,11 +11,11 @@
             <?php endif; ?>
             <div>
                 <label for="full_name">Nom complet</label>
-                <input required type="text" id="full_name" name="full_name" aria-describedby="full_name-help">
+                <input type="text" id="full_name" name="full_name" aria-describedby="full_name-help" required>
             </div>
             <div>
                 <label for="age">Age</label>
-                <input required type="number" id="age" name="age" aria-describedby="age-help">
+                <input type="number" id="age" name="age" aria-describedby="age-help" required>
             </div>
             <div>
                 <label for="email">Email</label>
@@ -23,7 +23,7 @@
             </div>
             <div>
                 <label for="password">Mot de passe</label>
-                <input required type="password" id="password" name="password">
+                <input type="password" id="password" name="password" required>
             </div>
             <button type="submit">S'inscrire</button>
             <a href="index.php?action=login">Se connecter</a>

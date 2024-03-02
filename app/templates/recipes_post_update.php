@@ -1,12 +1,11 @@
-<?php $title = "Site de Recettes - Page de modification de recettes"; ?>
+<?php $title = "Page de modification de recettes"; ?>
 <?php ob_start(); ?>
-    <h1>Recette modifiée avec succès !</h1>
-    <div>
-        <div>
-            <h5><?php echo htmlspecialchars($title); ?></h5>
-            <p><b>Email</b> : <?php echo htmlspecialchars($_SESSION['LOGGED_USER']['email']); ?></p>
-            <p><b>Recette</b> : <?php echo htmlspecialchars($recipe); ?></p>
-        </div>
-    </div>
+
+    <section class="flex-container section-container">
+        <h1 class="update-recipe-section-flex-item title">Recette modifiée avec succès !</h1>
+        <h4 class="update-recipe-section-flex-item title_recipe"><?= htmlspecialchars($title_recipe); ?></h4>
+        <p class="read-recipe-section-flex-item first-article recipe"><?= htmlspecialchars($recipe); ?></p>
+    </section>
+
 <?php $content = ob_get_clean(); ?>
 <?php require('layout.php') ?>

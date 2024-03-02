@@ -13,16 +13,16 @@ function addRecipes(array $input){
         || trim(strip_tags($postData['title'])) === ''
         || trim(strip_tags($postData['recipe'])) === ''
         || !preg_match("/^[\p{L}'\-]+(?:\s[\p{L}'\-]+)*$/u", $postData['title'])
-        || !preg_match("/^[\p{L}'\-]+(?:\s[\p{L}'\-]+)*$/u", $postData['recipe'])
+        || !preg_match("/^[\p{L}'\-\.,]+(?:\s[\p{L}'\-\.\",]+)*$/u", $postData['recipe'])
     ) {
         throw new Exception('Il faut un titre et une recette valides pour soumettre le formulaire.');
     }
 
-    $title = trim(strip_tags($postData['title']));
+    $title_recipe = trim(strip_tags($postData['title']));
     $recipe = trim(strip_tags($postData['recipe']));
     $autor = $_SESSION['LOGGED_USER']['email'];
     // Faire l'insertion en base
-    $success = createRecipe($title, $recipe, $autor);
+    $success = createRecipe($title_recipe, $recipe, $autor);
     if (!$success) {
         throw new Exception('Impossible d\'ajouter la recette !');
     } else {

@@ -9,5 +9,7 @@ function deleteRecipes(int $identifier){
         throw new Exception('Il faut un identifiant pour supprimer la recette.');
     }
 
+    $recipe = getRecipe($identifier);
+
     require('app/templates/recipes_delete.php');
 }

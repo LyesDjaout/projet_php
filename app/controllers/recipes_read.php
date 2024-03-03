@@ -13,7 +13,6 @@ $recipeWithComments = getRecipeWithComments($identifier);
 
 if ($recipeWithComments === []) {
     throw new Exception('La recette n\'existe pas');
-
 }
 
 $averageRating = getAverageRating($identifier);

@@ -1,20 +1,20 @@
 @font-face {
     font-family: 'EB Garamond SemiBold';
-    src: url('fonts/EB_Garamond/static/EBGaramond-SemiBold.ttf') format('truetype');
+    src: url('../fonts/EB_Garamond/static/EBGaramond-SemiBold.ttf') format('truetype');
     font-weight:bold;
     font-style:normal;
 }
 
 @font-face {
     font-family: 'EB Garamond ExtraBold';
-    src: url('fonts/EB_Garamond/static/EBGaramond-ExtraBold.ttf') format('truetype');
+    src: url('../fonts/EB_Garamond/static/EBGaramond-ExtraBold.ttf') format('truetype');
     font-weight:bold;
     font-style:normal;
 }
 
 @font-face {
     font-family: 'Montserrat Regular';
-    src: url('fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+    src: url('../fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -276,26 +276,24 @@ main{
     width: 50%;
 }
 
-/* read recipe  */
+/* read recipe article */
 
 .read-recipe-section-flex-item.first-article.autor{
     margin-top: 10%;
 }
-
-/**/
 
 .read-recipe-section-flex-item.first-article.recipe{
     line-height: 200%;
     letter-spacing: 0.5px;
 }
 
-/*footer*/
-
 #line{
     width: 100%;
     border: none;
     border-bottom: 0.5px solid #ECD9FA;
 }
+
+/*footer*/
 
 .flex-container.footer-container{
     background-color:#3D224E;
@@ -306,3 +304,5 @@ main{
     font-size: 125%;
     color: #ECD9FA;
 }
+
+/* responsive homepage */

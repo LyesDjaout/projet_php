@@ -231,7 +231,7 @@ function handleUpdateRecipeAction(){
 
         isConnect();
 
-        if (!isset($recipeId) || !is_numeric($recipeId)) {
+        if (!isset($_POST['recipe_id']) || !is_numeric($_POST['recipe_id'])) {
             throw new Exception('Il faut un identifiant de recette pour la modifier.');
         }
 
@@ -275,7 +275,7 @@ function handleDisplayUpdateRecipeAction(){
         if(!empty($errors)){
             $data['errors'] = $errors;
             $recipe = getRecipe($recipeId);
-            include_once 'templates/recipe_update.php';
+            include_once 'templates/update_recipe.php';
         } else {
             
             $error = updateRecipe($recipeTitle, $recipe, $recipeId, $author);

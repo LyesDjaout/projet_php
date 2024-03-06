@@ -3,7 +3,7 @@
 
     <section class="flex-container section-container">
         <h1 class="section-flex-item title">Ajouter une recette</h1>
-        <form class="flex-container form-container" action="index.php?action=recipe_create" method="POST">
+        <form class="flex-container form-container" action="index.php?action=create_recipe" method="POST">
             <input type="hidden" name="csrf_token" value="<?= sanitizeInput($_SESSION['csrf_token']); ?>">
             <label class="form-flex-item label" for="title">Titre de la recette</label>
             <input class="form-flex-item input" type="text" id="title" name="title" aria-describedby="title-help" required>

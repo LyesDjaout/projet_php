@@ -153,6 +153,7 @@ main{
     background-color:#301C3B;
     color: #ECD9FA;
     border: 0;
+    cursor: pointer;
 }
 
 /* contact section */

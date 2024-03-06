@@ -9,13 +9,13 @@
             <p class="homepage-article-flex-item third"><?= sanitizeInput(displayAuthor($recipe['author'], $users)); ?></p>
             <?php if (isset($_SESSION['LOGGED_USER']) && $recipe['author'] === $_SESSION['LOGGED_USER']['email']) : ?>
                 <form class="homepage-article-flex-item fourth" action="index.php?action=update_recipe" method="post">
-                    <input type="hidden" name="recipe_id" value="<?= htmlspecialchars($recipe['recipe_id']); ?>">
-                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
+                    <input type="hidden" name="recipe_id" value="<?= sanitizeInput($recipe['recipe_id']); ?>">
+                    <input type="hidden" name="csrf_token" value="<?= sanitizeInput($_SESSION['csrf_token']); ?>">
                     <button class="hommepage-article-button" type="submit" name="update_recipe">Editer la recette</button>
                 </form>
                 <form class="homepage-article-flex-item fifth" action="index.php?action=delete_recipe" method="post">
-                    <input type="hidden" name="recipe_id" value="<?= htmlspecialchars($recipe['recipe_id']); ?>">
-                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
+                    <input type="hidden" name="recipe_id" value="<?= sanitizeInput($recipe['recipe_id']); ?>">
+                    <input type="hidden" name="csrf_token" value="<?= sanitizeInput($_SESSION['csrf_token']); ?>">
                     <button class="hommepage-article-button" type="submit" name="delete_recipe">Supprimer la recette</button>
                 </form>
             <?php endif; ?>
@@ -26,7 +26,7 @@
                     <?php generateCsrfToken(); ?>
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
                 <?php endif; ?>
-                <input type="hidden" name="recipe_id" value="<?= htmlspecialchars($recipe['recipe_id']); ?>">
+                <input type="hidden" name="recipe_id" value="<?= sanitizeInput($recipe['recipe_id']); ?>">
                 <button class="hommepage-article-button" type="submit" name="read_recipe">Laisser un commentaire !</button>
             </form>
         </article>

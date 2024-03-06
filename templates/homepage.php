@@ -20,6 +20,12 @@
                 </form>
             <?php endif; ?>
             <form class="homepage-article-flex-item sixth" action="index.php?action=read_recipe" method="post">
+                <?php if (isset($_SESSION['csrf_token'])) : ?>
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
+                <?php else : ?>
+                    <?php generateCsrfToken(); ?>
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
+                <?php endif; ?>
                 <input type="hidden" name="recipe_id" value="<?= htmlspecialchars($recipe['recipe_id']); ?>">
                 <button class="hommepage-article-button" type="submit" name="read_recipe">Laisser un commentaire !</button>
             </form>

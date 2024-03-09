@@ -377,6 +377,15 @@ main{
         width: 100%;
     }
 
+    .flex-container.nav-container{
+        background-color:#3D224E;
+        display: flex;
+        justify-content: space-around;
+        padding:5.5% 3%;
+        font-family: 'Montserrat Regular';
+        font-size: 140%;
+    }
+
     .nav-flex-item.first{
         margin-right: 5%;
         order: -2;

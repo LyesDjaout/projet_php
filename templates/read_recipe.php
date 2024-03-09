@@ -1,4 +1,4 @@
-<?php $title = "Page de recette"; ?>
+<?php $title = "Page de commentaires"; ?>
 <?php ob_start(); ?>
 
 <section class="flex-container read-recipe-section-container">

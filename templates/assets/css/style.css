@@ -43,6 +43,30 @@ main{
     font-size: 100%;
 }
 
+.nav-flex-item.first.icone-menu{
+    display: none;
+}
+
+.nav-flex-item.second.icone-menu{
+    display: none;
+}
+
+.nav-flex-item.third.icone-menu{
+    display: none;
+}
+
+.nav-flex-item.fourth.icone-menu{
+    display: none;
+}
+
+.nav-flex-item.fifth.icone-menu{
+    display: none;
+}
+
+.nav-flex-item.sixth.icone-menu{
+    display: none;
+}
+
 .nav-flex-item{
     display: block;
     text-decoration: none;
@@ -262,10 +286,12 @@ main{
     flex-direction: column; 
     background-color: #3D224E;
     color: #ECD9FA;
-    padding: 3%;
-    width: 50%;
-    margin: auto;
+    padding: 4% 8%;
+    width: 80%;
+    margin: 5% 2%;
     font-family: 'Montserrat Regular';
+    box-shadow: 1px 1px 6px 1px #664282;
+    border: 0;
 }
 
 /* read recipe form */
@@ -316,3 +342,345 @@ main{
 
 /* responsive homepage */
 
+@media screen and (max-width: 500px) {
+    .flex-container.homepage-article-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background-color:#3D224E;
+        padding: 4% 8%;
+        margin: 5% 2%;
+        min-height: 200px;
+        box-shadow: 1px 1px 6px 1px #664282;
+        border: 0;
+        width: 80%;
+        color: #ECD9FA;
+    }
+    
+    .flex-container.read-recipe-section-container{
+        display: flex;
+        flex-direction: column; 
+        background-color: #3D224E;
+        color: #ECD9FA;
+        padding: 4% 8%;
+        width: 80%;
+        margin: 5% 2%;
+        font-family: 'Montserrat Regular';
+        box-shadow: 1px 1px 6px 1px #664282;
+        border: 0;
+    }
+
+    .flex-container.read-recipe-form-container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10%;
+        width: 100%;
+    }
+
+    .nav-flex-item.first{
+        margin-right: 5%;
+        order: -2;
+        border: 0;
+        padding: 0.7% 1.7%;
+        border-radius: 5px;
+    }
+    
+    .nav-flex-item.second{
+        border: 0;
+        padding: 0.7% 1.7%;
+        border-radius: 5px;
+    }
+    
+    .nav-flex-item.third{
+        margin-left: 10%;
+        border: 0;
+        padding: 0.7% 1.7%;
+        border-radius: 5px;
+    }
+    
+    .nav-flex-item.fourth{
+        margin-left: 5%;
+        border: 0;
+        padding: 0.7% 1.7%;
+        border-radius: 5px;
+    }
+    
+    .nav-flex-item.fifth{
+        margin-left: 5%;
+        border: 0;
+        padding: 0.7% 1.7%;
+        border-radius: 5px;
+    }
+    
+    .nav-flex-item.sixth{
+        margin-right: auto;
+        order: -1;
+        border: 0;
+        padding: 0.7% 1.7%;
+        border-radius: 5px;
+    }
+
+    .nav-flex-item.first.icone-menu{
+        display: block;
+    }
+
+    .nav-flex-item.second.icone-menu{
+        display: block;
+    }
+
+    .nav-flex-item.third.icone-menu{
+        display: block;
+    }
+
+    .nav-flex-item.fourth.icone-menu{
+        display: block;
+    }
+
+    .nav-flex-item.fifth.icone-menu{
+        display: block;
+    }
+
+    .nav-flex-item.sixth.icone-menu{
+        display: block;
+    }
+
+    .nav-flex-item.first{
+        display: none;
+    }
+
+    .nav-flex-item.second{
+        display: none;
+    }
+
+    .nav-flex-item.third{
+        display: none;
+    }
+
+    .nav-flex-item.fourth{
+        display: none;
+    }
+
+    .nav-flex-item.fifth{
+        display: none;
+    }
+
+    .nav-flex-item.sixth{
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 500px) and (max-height: 730px) {
+
+    /* contact section */
+
+.flex-container.section-container{
+    display: flex;
+    flex-direction: column;
+    background-color:#3D224E;
+    padding: 2% 7%;
+    min-height: 470px;
+    width: 80%;
+    box-shadow: 1px 1px 6px 1px #664282;
+    border: 0;
+    color: #ECD9FA;
+    font-family: 'Montserrat Regular';
+}
+
+.section-flex-item.title{
+    font-size: 21px;
+}
+
+.form-flex-item.button{
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 10%;
+    font-family: 'Montserrat Regular';
+}
+
+.form-flex-item.label{
+    font-size:15px;
+    margin: 2%;
+}
+
+.form-flex-item.input{
+    margin-bottom: 4%;
+    border-radius: 5px;
+    height: 25px;
+}
+
+.form-flex-item.area{
+    margin-bottom: 14%;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.contact-form-flex-item.fifth{
+    border-radius: 5px;
+    font-family: 'Montserrat Regular';
+}
+
+.form-flex-item.change-page-button{
+    text-align: center;
+    background-color: #3D224E;
+    border-radius: 4px;
+    height: 20px;
+    text-decoration: none;
+    padding: 1.5% 0% 2% 0%;
+    font-size: 90%;
+    color: #ECD9FA;
+    border: 2px solid #54346B;
+}
+}
+
+@media screen and (max-width: 500px) and (min-height: 730px) and (max-height: 800px) {
+
+    /* contact section */
+
+.flex-container.section-container{
+    display: flex;
+    flex-direction: column;
+    background-color:#3D224E;
+    padding: 2% 7%;
+    min-height: 540px;
+    width: 80%;
+    box-shadow: 1px 1px 6px 1px #664282;
+    border: 0;
+    color: #ECD9FA;
+    font-family: 'Montserrat Regular';
+}
+
+.section-flex-item.title{
+    font-size: 20px;
+}
+
+.form-flex-item.button{
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 10%;
+    font-family: 'Montserrat Regular';
+}
+
+.form-flex-item.label{
+    margin: 4%;
+    font-size: 15px;
+}
+
+.form-flex-item.input{
+    margin-bottom: 6%;
+    border-radius: 5px;
+    height: 26px;
+}
+
+.form-flex-item.area{
+    margin-bottom: 14%;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.contact-form-flex-item.fifth{
+    border-radius: 5px;
+    font-family: 'Montserrat Regular';
+}
+
+.form-flex-item.change-page-button{
+    text-align: center;
+    background-color: #3D224E;
+    border-radius: 4px;
+    height: 20px;
+    text-decoration: none;
+    padding: 1.5% 0% 2% 0%;
+    font-size: 90%;
+    color: #ECD9FA;
+    border: 2px solid #54346B;
+}
+}
+
+@media screen and (max-width: 500px) and (min-height: 800px) {
+
+    /* contact section */
+
+.flex-container.section-container{
+    display: flex;
+    flex-direction: column;
+    background-color:#3D224E;
+    padding: 2% 7%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    min-height: 640px;
+    width: 80%;
+    box-shadow: 1px 1px 6px 1px #664282;
+    border: 0;
+    color: #ECD9FA;
+    font-family: 'Montserrat Regular';
+}
+
+.section-flex-item.title{
+    font-size: 23px;
+}
+
+.form-flex-item.button{
+    border-radius: 5px;
+    height: 35px;
+    margin-top: 10%;
+    font-family: 'Montserrat Regular';
+}
+
+.form-flex-item.label{
+    margin: 4%;
+}
+
+.form-flex-item.input{
+    margin-bottom: 10%;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.form-flex-item.area{
+    margin-bottom: 14%;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.contact-form-flex-item.fifth{
+    border-radius: 5px;
+    font-family: 'Montserrat Regular';
+}
+
+.form-flex-item.change-page-button{
+    text-align: center;
+    background-color: #3D224E;
+    border-radius: 4px;
+    height: 20px;
+    text-decoration: none;
+    padding: 1.5% 0% 2% 0%;
+    font-size: 90%;
+    color: #ECD9FA;
+    border: 2px solid #54346B;
+}
+}
+
+@media screen and (max-width: 500px) and (min-height: 950px) {
+
+    /* contact section */
+
+.flex-container.section-container{
+    display: flex;
+    flex-direction: column;
+    background-color:#3D224E;
+    padding: 2% 7%;
+    min-height: 680px;
+    width: 80%;
+    box-shadow: 1px 1px 6px 1px #664282;
+    border: 0;
+    color: #ECD9FA;
+    font-family: 'Montserrat Regular';
+}
+
+.form-flex-item.button{
+    border-radius: 5px;
+    height: 30px;
+    margin-top: 15%;
+    font-family: 'Montserrat Regular';
+}
+}

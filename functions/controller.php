@@ -1,9 +1,7 @@
 <?php
 include_once 'service.php';
 include_once 'security.php';
-include_once 'model/comment.php';
-include_once 'model/recipe.php';
-include_once 'model/user.php';
+include_once 'model.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();    
